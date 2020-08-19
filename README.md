@@ -1,2 +1,5 @@
-# c_templates
-Basic templates for a C program. This is a "Hello World" of sorts, but with extras like unit testing.
+# C Program Template
+
+## Template for a complete C program
+
+This repository has the scaffolding of a hello world program that includes a second source file and a makefile,
