@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "c_template.h"
 
-int print_hello_world(void)
+void print_hello_world(void)
 {
     char *my_str = get_hello_world();
     printf("%s: %s!\n", __func__, my_str);
