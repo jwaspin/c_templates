@@ -1,2 +1,4 @@
-bin/**
-unity/**
+**bin**
+**unity**
+**.swp**
+hello_world/helloworld
