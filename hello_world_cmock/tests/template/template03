@@ -1,0 +1,7 @@
+{
+    TEST_ASSERT_TRUE(true);
+}
+
+int main(void)
+{
+    UNITY_BEGIN();
