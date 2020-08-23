@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf bin/ cmock/ unity/
+rm -rf bin/ cmock/ unity/ mocks/

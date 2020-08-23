@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ruby cmock/lib/cmock.rb inc/c_template.h
+ruby cmock/lib/cmock.rb inc/hello_world.h

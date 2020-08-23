@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "c_template.h"
+#include "hello_world.h"
 
 int main(int argc, char** argv)
 {

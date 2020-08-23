@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "unity.h"
-#include "c_template.h"
+#include "hello_world.h"
 
 void setUp(void)
 {
