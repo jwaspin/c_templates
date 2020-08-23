@@ -2,6 +2,6 @@
 
 mkdir bin
 
-git clone https://github.com/ThrowTheSwitch/Unity.git
+git clone https://github.com/ThrowTheSwitch/unity.git
 
-git clone https://github.com/ThrowTheSwitch/CMock.git
+git clone https://github.com/ThrowTheSwitch/cmock.git
