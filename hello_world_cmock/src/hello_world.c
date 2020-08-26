@@ -1,15 +1,26 @@
 #include <stdio.h>
+#include <stddef.h>
 #include "hello_world.h"
 
-void print_hello_world(void)
+static void print_hello_world(struct hello *h, struct world *w)
 {
-    char *my_str = get_hello_world();
-    printf("%s: %s!\n", __func__, my_str);
+    if ( (h == NULL) || (w == NULL) ) return;
+
+    printf("%s %s!\n", h->hello_string, w->world_string);
 }
 
-char * get_hello_world(void)
+int testable_main(int argc, char** argv)
 {
-    char *hw_str = "Hello World!";
+    struct hello *h = NULL;
+    struct world *w = NULL;
 
-    return hw_str;
+    h = hello_init_new("Hello");
+    if (h == NULL) return -1;
+
+    w = world_init_new("World");
+    if (w == NULL) return -1;
+
+    print_hello_world(h, w);
+
+    return 0;
 }

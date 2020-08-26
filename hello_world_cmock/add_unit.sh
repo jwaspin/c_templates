@@ -4,18 +4,44 @@ UNIT=${1}
 
 mkdir tests/$UNIT
 
-cat tests/template/template01 > tests/${UNIT}/test_${UNIT}.c
-echo "#include \"${UNIT}.h\"" >> tests/${UNIT}/test_${UNIT}.c
-cat tests/template/template02 >> tests/${UNIT}/test_${UNIT}.c
-echo "void test_${UNIT}(void)" >> tests/${UNIT}/test_${UNIT}.c
-cat tests/template/template03 >> tests/${UNIT}/test_${UNIT}.c
-echo "    RUN_TEST(test_object);" >> tests/${UNIT}/test_${UNIT}.c
-cat tests/template/template04 >> tests/${UNIT}/test_${UNIT}.c
+cat > tests/${UNIT}/test_${UNIT}.c << EOF
+#include <stdio.h>
+#include "unity.h"
+#include "${UNIT}.h"
 
-echo "#ifndef __${UNIT}_H__" >  inc/${UNIT}.h
-echo "#define __${UNIT}_H__" >> inc/${UNIT}.h
-echo >> inc/${UNIT}.h
-echo "#endif /* __${UNIT}_H__ */" >> inc/${UNIT}.h
+void setUp(void)
+{
+    // No-Op
+    return;
+}
 
-echo "#include \"${UNIT}.h\"" > src/${UNIT}.c
-echo >> src/${UNIT}.c
+void tearDown(void)
+{
+    // No-Op
+    return;
+}
+
+void test_${UNIT}(void)
+{
+    TEST_ASSERT_TRUE(true);
+}
+
+int main(void)
+{
+    UNITY_BEGIN();
+    RUN_TEST(test_${UNIT});
+    return UNITY_END();
+}
+EOF
+
+cat > inc/${UNIT}.h << EOF
+#ifndef __${UNIT^^}_H__
+#define __${UNIT^^}_H__
+
+#endif /* __${UNIT^^}_H__ */
+EOF
+
+cat > src/${UNIT}.c << EOF
+#include "${UNIT}.h"
+
+EOF
