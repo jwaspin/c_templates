@@ -2,9 +2,31 @@
 
 UNIT=${1}
 
-mkdir tests/$UNIT
+mkdir tests/${UNIT}
 
-cat > tests/${UNIT}/test_${UNIT}.c << EOF
+cat > inc/${UNIT}.h << EOF
+#ifndef __${UNIT^^}_H__
+#define __${UNIT^^}_H__
+
+#endif /* __${UNIT^^}_H__ */
+EOF
+
+cat > src/${UNIT}.c << EOF
+#include "${UNIT}.h"
+
+EOF
+
+cd tests/${UNIT}
+
+ln -s ../../unity/src/unity.h
+ln -s ../../unity/src/unity.c
+ln -s ../../unity/src/unity_internals.h
+
+ln -s ../../cmock/src/cmock.h
+ln -s ../../cmock/src/cmock.c
+ln -s ../../cmock/src/cmock_internals.h
+
+cat > test_${UNIT}.c << EOF
 #include <stdio.h>
 #include "unity.h"
 #include "${UNIT}.h"
@@ -32,16 +54,4 @@ int main(void)
     RUN_TEST(test_${UNIT});
     return UNITY_END();
 }
-EOF
-
-cat > inc/${UNIT}.h << EOF
-#ifndef __${UNIT^^}_H__
-#define __${UNIT^^}_H__
-
-#endif /* __${UNIT^^}_H__ */
-EOF
-
-cat > src/${UNIT}.c << EOF
-#include "${UNIT}.h"
-
 EOF

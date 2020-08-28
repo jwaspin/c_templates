@@ -1,26 +1,56 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stddef.h>
 #include "hello_world.h"
 
-static void print_hello_world(struct hello *h, struct world *w)
+struct hello_world* hello_world_init_new(char *hstr, char *wstr)
 {
-    if ( (h == NULL) || (w == NULL) ) return;
+    struct hello_world *hw = NULL;
 
-    printf("%s %s!\n", h->hello_string, w->world_string);
+    if ( (hstr == NULL) || (wstr == NULL) ) return NULL;
+
+    hw = calloc(1, sizeof(*hw));
+    if (hw == NULL) return NULL;
+
+    hw->h = hello_init_new(hstr);
+    if (hw->h == NULL) goto err_hello;
+
+    hw->w = world_init_new(wstr);
+    if (hw->w == NULL) goto err_world;
+
+    return hw;
+
+err_world:
+    hello_free(hw->h);
+    hw->h = NULL;
+
+err_hello:
+    free(hw);
+    return NULL;
 }
 
-int testable_main(int argc, char** argv)
+void hello_world_print(struct hello_world *hw)
 {
-    struct hello *h = NULL;
-    struct world *w = NULL;
+    if (hw == NULL) return;
 
-    h = hello_init_new("Hello");
-    if (h == NULL) return -1;
+    printf("%s %s!\n", hw->h->hello_string, hw->w->world_string);
+}
 
-    w = world_init_new("World");
-    if (w == NULL) return -1;
+void hello_world_free(struct hello_world *hw)
+{
+    if (hw == NULL) return;
 
-    print_hello_world(h, w);
+    if (hw->h != NULL)
+    {
+        hello_free(hw->h);
+        hw->h = NULL;
+    }
 
-    return 0;
+    if (hw->w != NULL)
+    {
+        world_free(hw->w);
+        hw->w = NULL;
+    }
+
+    free(hw);
 }

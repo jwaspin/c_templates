@@ -7,8 +7,11 @@ struct world
 };
 
 struct world* world_init_new(char *s);
+
 char* get_world_string(struct world *h);
+
 int set_world_string(struct world *w, char *s);
+
 void world_free(struct world *h);
 
 #endif /* __WORLD_H__ */

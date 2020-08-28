@@ -1,4 +1,4 @@
-#include "hello_world.h"
+#include "testable_main.h"
 
 int main(int argc, char** argv)
 {
