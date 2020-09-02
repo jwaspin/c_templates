@@ -14,7 +14,7 @@ To run the Hello World example, there is a setup script that clones the unity fr
 ./setup.sh
 ```
 
-The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be build using the simple command:
+The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be built using the simple command:
 
 ```
 make
