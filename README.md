@@ -21,7 +21,7 @@ The unity framework is specifically for unit testing, so you can still run the H
 make
 ```
 
-which builds an executable named `helloworld`. Run it using:
+which builds an executable named `hello_world`. Run it using:
 
 ```
 .helloworld
@@ -33,11 +33,18 @@ In order to run the tests, you must clone the unity framework, currently using t
 make test
 ```  
 
-which will build an executable called `testhelloworld` and place it in the `/bin` directory. Run the tests using:
+which will build an executable called `test_hello_world` and place it in the `/bin` directory. Run the tests using:
 
 ```
 ./bin/testhelloworld
 ```
+
+To cleanup executables and object files:
+
+```
+make clean
+```
+
 
 **Note: These instructions are likely to change slightly as I clean up the makefile and overall setup process**
 
