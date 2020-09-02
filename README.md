@@ -9,10 +9,10 @@ This is a bare-minimum template with makefile.
 ## Hello World Unity
 
 This template adds unit testing with the Unity framework by [ThrowTheSwitch].  
-To run the Hello World example, there is a setup script that clones the unity framework and creates a directory. This will probably disappear once I update the makefile in place of just cloning the framework.  
+To run the Hello World example, you need to clone the unity framework: 
 
 ```
-./setup.sh
+git clone https://github.com/ThrowTheSwitch/Unity.git
 ```
 
 The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be built using the simple command:
