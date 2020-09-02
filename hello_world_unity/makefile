@@ -1,7 +1,14 @@
-.PHONY: test
+OBJS = hello_world.o main.o
 
-helloworld: src/*.c
-	gcc -o bin/helloworld src/*.c -I inc/
+hello_world: $(OBJS)
+	gcc -o $@ $(OBJS)
 
-test: test/*.c src/hello_world.c unity/src/unity.c
-	gcc -o bin/testhelloworld test/*.c src/hello_world.c unity/src/unity.c -I unity/src/ -I inc/
+main.o: src/main.c inc/hello_world.h
+	gcc -c src/main.c -I inc/
+
+hello_world.o: src/hello_world.c inc/hello_world.h
+	gcc -c src/hello_world.c -I inc/
+
+.PHONY: clean
+clean: 
+	rm hello_world $(OBJS)

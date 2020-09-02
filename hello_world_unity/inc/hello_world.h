@@ -4,6 +4,6 @@
 
 void print_hello_world(void);
 
-char * get_hello_world(void);
+char* get_hello_world(void);
 
 #endif /* __HELLO_WORLD_H__ */
