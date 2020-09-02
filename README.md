@@ -12,7 +12,7 @@ This template adds unit testing with the Unity framework by [ThrowTheSwitch].
 To run the Hello World example, you need to clone the unity framework: 
 
 ```
-git clone https://github.com/ThrowTheSwitch/Unity.git
+git clone https://github.com/ThrowTheSwitch/unity.git
 ```
 
 The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be built using the simple command:
