@@ -18,7 +18,7 @@ test_hello_world: $(TEST_OBJ)
 	gcc -o $@ $(TEST_OBJ)
 
 unity.o: $(UNITY)
-	gcc -c $(UNITY) -I unity/src/
+	gcc -c unity/src/unity.c -I unity/src/
 
 .PHONY: clean
 clean: 
