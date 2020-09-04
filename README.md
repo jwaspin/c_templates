@@ -1,14 +1,26 @@
 # C Templates
-Templates for C programs in the form of Hello World. 
+Templates for C programs in the form of Hello World.  
+This is currently under development. The Hello World and Hello World Unity templates are mostly done, but the cmock template still needs a new makefile and some improvements to the setup/run/cleanup processes, which are underway. The cmock example template is fully functional, so you should still check it out.
 
 ## Hello World
 
-This is a bare-minimum template with makefile.
+This is a bare-minimum template with makefile.  
+Compile using the simple command:
+
+```
+make
+```
+
+then run the executable with:
+
+```
+./helloworld
+```
 
 ## Hello World Unity
 
 This template adds unit testing with the Unity framework by [ThrowTheSwitch].  
-To run the Hello World example, there is a setup script that clones the unity framework and creates a directory. This will probably disappear once I update the makefile in place of just cloning the framework.  
+To run the Hello World example test, first you need to clone the unity repository:  
 
 ```
 git clone https://github.com/ThrowTheSwitch/unity.git
