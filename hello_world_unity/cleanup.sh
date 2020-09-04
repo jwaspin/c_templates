@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf bin/ unity/
+rm -rf unity/
