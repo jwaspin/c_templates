@@ -28,7 +28,7 @@ To run the Hello World example test, first you need to clone the unity repositor
 git clone https://github.com/ThrowTheSwitch/unity.git
 ```
 
-The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be build using the simple command:
+The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be built using the simple command:
 
 ```
 make
