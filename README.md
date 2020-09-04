@@ -1,80 +1,24 @@
-# C Templates
-
-Templates for C programs in the form of Hello World. 
+# C Program Template
 
 ## Hello World
 
-This is a bare-minimum template with makefile.
+This is a bare-minimum example for Hello World with a bare-minimum makefile  
 
 ## Hello World Unity
 
-This template adds unit testing with the Unity framework by [ThrowTheSwitch].  
-To run the Hello World example, there is a setup script that clones the unity framework and creates a directory. This will probably disappear once I update the makefile in place of just cloning the framework.  
+This is a Hello World example that includes a basic makefile and unit testing with the Unity framework.  
+Navigate into this directory from the command line and type `./setup.sh` then `make` or `make test`.  
+To run, type `./bin/helloworld` or `./bin/testhelloworld` respectively.  
+Detailed instructions are coming soon.  
 
-```
-./setup.sh
-```
+## Hello World cmock
 
-The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be built using the simple command:
+This is a Hello World example that adds cmock alongside the unity framework. Because cmock and unity are about unit testing, to understand how powerful their combination is we must take the concept of "Hello World" to an object-oriented mindset. This template breaks the "Hello World" example into 3 new objects: "hello", "world", and "hello_world". By turning this into a set of objects, and specifically having an object that depends on other objects, we can begin to understand how mocking with cmock can effectively simplify writing unit tests.  
 
-```
-make
-```
+This is still a work in progress, so these instructions will be improved with a better makefile and improved supporting scripts. However, if you're wanting to get started now, it's ready to go. This setup process requires ruby and its gem "bundle" to be installed prior to running the setup script. I will add instructions for that as well, but I was able to figure it out easily with some DuckDuckGoogling.  
 
-which builds an executable named `helloworld`. Run it using:
+If you already have ruby installed with its gem "bundle" then you can safely continue with the steps below. If not, the script should fail without breaking anything, but the scripts are untested for errors aside from the few I already fixed. I was running this on a Raspberry Pi, so I didn't need to worry about breaking my system. I always recommend using VM's, EC2, or a Single-board computer that's not being used for anything else when testing new things, but I especially recommend that in this case, at least until I improve the setup process.  
 
-```
-.helloworld
-```
-
-In order to run the tests, you must clone the unity framework, currently using the setup script above. Once that is finished you can build the tests using:
-
-```
-make test
-```  
-
-which will build an executable called `testhelloworld` and place it in the `/bin` directory. Run the tests using:
-
-```
-./bin/testhelloworld
-```
-
-**Note: These instructions are likely to change slightly as I clean up the makefile and overall setup process**
-
-## Hello World CMock
-
-This template provides a working Hello World example using cmock and unity together. Mocking using cmock required Hello World to be object-oriented. This was done in a rather trivial manner in order to demonstrate both object-oriented programming in C as well as mocking using the cmock framework and unit testing with unity. Once again, you can build and run the example Hello World without running the setup script, but the tests require both unity and cmock to be cloned and the `/bin` directory to be created:
-
-```
-./setup.sh
-```
-
-This will build the executable `helloworld`:
-
-```
-make
-```
-
-and then run it using:
-
-```
-./helloworld
-```
-
-The tests can be built using:
-
-```
-make testhello && make testworld && make testhelloworld && make testmain
-```
-
-then run the tests using:
-
-```
-./bin/testhello; ./bin/testworld; ./bin/testhelloworld; ./bin/testmain
-```
-
-**Note: These instructions are likely to change slightly as I clean up the makefile and overall setup process**
-
-My Doh Client repo will be a working example for unity and cmock.
-
-[ThrowTheSwitch]: <https://github.com/ThrowTheSwitch>
+1. Run `./setup` 
+2. Run `make testhello && make testworld && make testhelloworld && make testmain && make`  
+3. Run `./bin/testhello && ./bin/testworld && ./bin/testhelloworld && ./bin/testmain && ./bin/helloworld`
