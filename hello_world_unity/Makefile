@@ -39,8 +39,12 @@ name := hello_world
 program := $(BINDIR)hello_world
 test := $(BINDIR)test_hello_world
 
-.PHONY: all
-all: $(program) $(test)
+.PHONY: all run FORCE
+all: $(program) $(test) run
+
+FORCE: ;
+
+run: FORCE
 	@./build/bin/test_hello_world
 	@./build/bin/hello_world
 
