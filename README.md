@@ -1,5 +1,7 @@
 # C Templates
-Templates for C programs in the form of Hello World.  
+Templates for C programs in the form of Hello World examples.  
+
+All of the following instructions assume you are inside the respective directories.
 
 
 **This is currently under development. The Hello World and Hello World Unity templates are mostly done, but the cmock template still needs a new makefile and some improvements to the setup/run/cleanup processes, which are underway. The cmock example template is fully functional, so you should still check it out.**
@@ -22,35 +24,43 @@ then run the executable with:
 ## Hello World Unity
 
 This template adds unit testing with the Unity framework by [ThrowTheSwitch].  
-To run the Hello World example test, first you need to clone the unity repository:  
 
-```
-git clone https://github.com/ThrowTheSwitch/unity.git
-```
-
-The unity framework is specifically for unit testing, so you can still run the Hello World example without cloning it. The example can be built using the simple command:
+Everything works with make, so the easiest way to build and run the example is just type:
 
 ```
 make
 ```
 
-which builds an executable named `hello_world`. Run it using:
+That assumes you have git installed. It starts by cloning the unity repository:
 
 ```
-./hello_world
+git clone https://github.com/ThrowTheSwitch/unity.git
 ```
 
-In order to run the tests, you must clone the unity framework, currently using the setup script above. Once that is finished you can build the tests using:
+Then it compiles the hello_world and test_hello_world executables after compiling their object files.
+
+You can also take a more step by step approach:
 
 ```
-make test_hello_world
-```  
+make unity
+make build
+make run
+```
 
-which will build an executable called `test_hello_world`. Run the tests using:
+`make run` will execute the test followed by the example.
+
+If you need to clean things up:
 
 ```
-./test_hello_world
+make clean
 ```
+
+which will also remove Unity. You can remove only Unity with:
+
+```
+make cleanunity
+```
+
 
 ## Hello World CMock
 
