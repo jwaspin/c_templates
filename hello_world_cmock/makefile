@@ -1,19 +1,35 @@
-.PHONY: testmain
-.PHONY: testhelloworld
-.PHONY: testhello
-.PHONY: testworld
+MAIN_OBJ = hello.o world.o hello_world.o testable_main.o main.o
+TEST_OBJ = unity.o cmock.o
 
-helloworld: src/*.c
-	gcc -o bin/helloworld src/*.c -I inc/
+INC = -I inc/
+TEST_INC = -I unity/src/ -I cmock/src/
 
-testmain: tests/testable_main/*.c src/testable_main.c
-	gcc -o bin/testmain src/testable_main.c tests/testable_main/*.c -I inc/ -I tests/testable_main/
+hello_world:
 
-testhelloworld: tests/hello_world/*.c src/hello_world.c
-	gcc -o bin/testhelloworld src/hello_world.c tests/hello_world/*.c -I inc/ -I tests/hello_world/
+.PHONY: tests
+tests: test_hello_world test_hello test_world test_testable_main
 
-testhello: tests/hello/*.c src/hello.c unity/src/unity.c
-	gcc -o bin/testhello src/hello.c tests/hello/*.c -I inc/ -I tests/hello/
+test_hello_world: $(TEST_OBJ) test_hello_world.o
+	gcc -o $@ $(TEST_OBJ) test_hello_world.o
 
-testworld: tests/world/*.c src/world.c unity/src/unity.c
-	gcc -o bin/testworld src/world.c tests/world/*.c -I inc/ -I tests/world/
+test_hello: $(TEST_OBJ)
+
+test_world: $(TEST_OBJ)
+
+test_testable_main: $(TEST_OBJ)
+
+main.o:
+
+testable_main.o:
+
+hello_world.o:
+
+hello.o:
+
+world.o:
+
+unity.o:
+
+cmock.o:
+
+
