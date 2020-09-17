@@ -1,6 +1,8 @@
 # C Templates
 Templates for C programs in the form of Hello World examples.  
 
+All of the following instructions assume you are inside the respective directories.
+
 
 **This is currently under development. The Hello World and Hello World Unity templates are mostly done, but the cmock template still needs a new makefile and some improvements to the setup/run/cleanup processes, which are underway. The cmock example template is fully functional, so you should still check it out.**
 
