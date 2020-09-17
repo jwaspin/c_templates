@@ -6,16 +6,15 @@ SRCDIR := src/
 OBJDIR := build/obj/
 BINDIR := build/bin/
 TESTDIR := test/
-UT_LIB := unity
-UT_INC := unity/src/
-UT_SRC := unity/src/
+
+name := hello_world
+program := $(BINDIR)hello_world
+test := $(BINDIR)test_hello_world
 
 vpath %.h $(INCDIR)
 vpath %.c $(SRCDIR)
 vpath %.o $(OBJDIR)
 vpath %.c $(TESTDIR)
-vpath %.h $(UT_INC)
-vpath %.c $(UT_SRC)
 
 PATHS := $(wildcard $(SRCDIR)*.c)
 SRCS := $(subst $(SRCDIR),,$(PATHS))
@@ -23,28 +22,20 @@ OBJS := $(patsubst %.c,%.o,$(SRCS))
 PATHO := $(addprefix $(OBJDIR),$(OBJS))
 PATHOX := $(filter-out $(OBJDIR)main.o,$(PATHO))
 
-PATHTS := $(wildcard $(TESTDIR)*.c)
-TSRCS := $(subst $(TESTDIR),,$(PATHTS))
-
-PATHUS := $(UT_SRC)unity.c
-TSRCS += $(subst $(UT_SRC),,$(PATHUS))
-
-TOBJS := $(patsubst %.c,%.o,$(TSRCS))
-PATHTO := $(addprefix $(OBJDIR),$(TOBJS))
+T_PATHS := $(wildcard $(TESTDIR)*.c)
+T_SRCS := $(subst $(TESTDIR),,$(T_PATHS))
+T_OBJS := $(patsubst %.c,%.o,$(T_SRCS))
+T_PATHO := $(addprefix $(OBJDIR),$(T_OBJS))
 
 CFLAGS := -I$(INCDIR)
-CFLAGS += -I$(UT_INC)
 
-name := hello_world
-program := $(BINDIR)hello_world
-test := $(BINDIR)test_hello_world
-
-.PHONY: all run FORCE
+.PHONY: all run
 all: $(program) $(test) run
 
-FORCE: ;
+include unity.mk
+CFLAGS += -I$(UT_PATHI)
 
-run: FORCE
+run:
 	@./build/bin/test_hello_world
 	@./build/bin/hello_world
 
@@ -58,19 +49,15 @@ $(PATHO): | $(OBJDIR)
 $(PATHO): $(OBJDIR)%.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-
 $(test): | $(BINDIR)
 
-$(test): $(PATHTO) $(PATHOX)
-	$(CC) -o $@ $(PATHTO) $(PATHOX)
+$(test): $(UT_OBJP) $(T_PATHO) $(PATHOX)
+	$(CC) -o $@ $(T_PATHO) $(PATHOX) $(UT_OBJP)
 
-$(PATHTO): | $(UT_LIB) $(OBJDIR)
+$(T_PATHO): | $(OBJDIR)
 
-$(PATHTO): $(UT_SRC)unity.c
-
-$(PATHTO): $(OBJDIR)%.o: %.c
+$(T_PATHO): $(OBJDIR)%.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
-
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
@@ -78,14 +65,8 @@ $(OBJDIR):
 $(BINDIR):
 	@mkdir -p $(BINDIR)
 
-$(UT_LIB):
-	git clone https://github.com/ThrowTheSwitch/unity
-
 .PHONY: clean
 clean: clean$(UT_LIB)
 	-rm $(OBJDIR)*.o && rmdir $(OBJDIR)
 	-rm $(BINDIR)* && rmdir $(BINDIR)
 	-rmdir build/
-
-clean$(UT_LIB):
-	-rm -rf $(UT_LIB)
