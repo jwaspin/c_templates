@@ -63,7 +63,7 @@ $(OBJSP): $(PATHO)%.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY: runprogram
-runprogram:
+runprogram: $(PROGRAM)
 	@echo "\n.........................Running $(PROGRAM)................................................\n" | cut -c -80
 	@./$(PROGRAM)
 	@echo "\n................................................................................\n"
@@ -76,7 +76,8 @@ $(TST_OBJSP): | $(PATHO)
 $(TST_OBJSP): $(PATHO)%.o: %.c
 	$(CC) -o $@ -c $< $(TST_CFLAGS)
 
-.PHONY: runtest
+.PHONY: runtest runtests
+runtests: runtest
 runtest: $(TST_BIN)
 	@echo "\n\n.........................Running tests..........................................\n\n"
 	@for test in $(TST_BIN) ; do \
