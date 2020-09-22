@@ -4,7 +4,7 @@ Templates for C programs in the form of Hello World examples.
 All of the following instructions assume you are inside the respective directories.
 
 
-**This is currently under development. The Hello World and Hello World Unity templates are mostly done, but the cmock template still needs a new makefile and some improvements to the setup/run/cleanup processes, which are underway. The cmock example template is fully functional, so you should still check it out.**
+**This is currently under development but is nearly completed. I just finished a more advanced Makefile for the \_cmock template, but need to fix one issue and I want to add an automated way to add new units.**
 
 ## Hello World
 
@@ -31,7 +31,7 @@ Everything works with make, so the easiest way to build and run the example is j
 make
 ```
 
-That assumes you have git installed. It starts by cloning the unity repository:
+That assumes you have git installed (alternatively, you could download the framework and place it in a directory named `unity/`. It starts by cloning the unity repository:
 
 ```
 git clone https://github.com/ThrowTheSwitch/unity.git
@@ -64,38 +64,41 @@ make cleanunity
 
 ## Hello World CMock
 
-This template provides a working Hello World example using cmock and unity together. Mocking using cmock required Hello World to be object-oriented. This was done in a rather trivial manner in order to demonstrate both object-oriented programming in C as well as mocking using the cmock framework and unit testing with unity. Once again, you can build and run the example Hello World without running the setup script, but the tests require both unity and cmock to be cloned and the `/bin` directory to be created:
+This template provides a working Hello World example using cmock and unity together. Mocking using cmock required Hello World to be object-oriented. This was done in a rather trivial manner in order to demonstrate both object-oriented programming in C as well as mocking using the cmock framework and unit testing with unity.  
 
-```
-./setup.sh
-```
-
-This will build the executable `helloworld`:
+Because of cmock's dependencies, I have added a more complicated `Makefile` to handle everything. This simple command will do everything:
 
 ```
 make
 ```
 
-and then run it using:
+Unfortunately, right now you need to type that in twice. I'm working on the mock object dependencies so it builds everything with a single `make`, but I'm still learning.  
+
+You can clean everything up with a single
 
 ```
-./helloworld
+make clean
 ```
 
-The tests can be built using:
+or you can target specific options (I'll add a list shortly, for now just look in the makefiles and grep for 'clean').
+
+There are also a couple options to run everything once the first `make` is executed:
 
 ```
-make testhello && make testworld && make testhelloworld && make testmain
+make run
 ```
 
-then run the tests using:
+will do it all. Use this one or `make` as much as you like to run both the tests and the program. If you want to run one or the other, append it to the end of 'clean', for example:
 
 ```
-./bin/testhello; ./bin/testworld; ./bin/testhelloworld; ./bin/testmain
+make runtests
 ```
 
-**Note: These instructions are likely to change slightly as I clean up the makefile and overall setup process**
+or you can use:
 
-My Doh Client repo will be a working example for unity and cmock.
+```
+make runprogram
+```
+ 
 
 [ThrowTheSwitch]: <https://github.com/ThrowTheSwitch>
