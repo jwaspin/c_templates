@@ -1,1 +1,0 @@
-../../mocks/Mockhello.c
