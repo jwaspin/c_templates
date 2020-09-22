@@ -31,7 +31,7 @@ Everything works with make, so the easiest way to build and run the example is j
 make
 ```
 
-That assumes you have git installed (alternatively, you could download the framework and place it in a directory named `unity/`. It starts by cloning the unity repository:
+That assumes you have git installed - alternatively, you could download the framework and place it in a directory named `unity/`. It starts by cloning the unity repository:
 
 ```
 git clone https://github.com/ThrowTheSwitch/unity.git
