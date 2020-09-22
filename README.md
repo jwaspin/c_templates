@@ -88,7 +88,7 @@ There are also a couple options to run everything once the first `make` is execu
 make run
 ```
 
-will do it all. Use this one or `make` as much as you like to run both the tests and the program. If you want to run one or the other, append it to the end of 'clean', for example:
+will do it all. Use this one or `make` as much as you like to run both the tests and the program. If you want to run one or the other, append it to the end of 'run', for example:
 
 ```
 make runtests
