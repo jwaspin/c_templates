@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "unity.h"
 #include "hello_world.h"
 
