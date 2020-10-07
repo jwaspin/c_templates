@@ -6,7 +6,7 @@ All of the following instructions assume you are inside the respective directori
 These were all tested using a Raspberry Pi running Raspbian. I will provide more details soon.
 
 
-**This is currently under development but is nearly completed. I just finished a more advanced Makefile for the \_cmock template, but need to fix one issue and I want to add an automated way to add new units.**
+**This is currently under development but is nearly completed. I finished a more advanced Makefile for the \_cmock template, but need to fix one issue and I want to add an automated way to add new units.**
 
 ## Hello World
 
