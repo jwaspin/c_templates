@@ -83,7 +83,7 @@ You can clean everything up with a single
 make clean
 ```
 
-or you can target specific options `cleanobj` and `cleanbin` or `cleanunity`, `cleancmock`, and `cleanmocks` for the libraries and mocks.
+or you can target specific options `cleanobj` and `cleanbin` or `cleanunity`, `cleancmock`, and `cleanmocks` for the frameworks and mocks.
 
 There are also a couple options to run everything once the first `make` is executed:
 
