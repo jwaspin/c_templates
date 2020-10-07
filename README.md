@@ -3,6 +3,8 @@ Templates for C programs in the form of Hello World examples.
 
 All of the following instructions assume you are inside the respective directories.
 
+These were all tested using a Raspberry Pi running Raspbian. I will provide more details soon.
+
 
 **This is currently under development but is nearly completed. I just finished a more advanced Makefile for the \_cmock template, but need to fix one issue and I want to add an automated way to add new units.**
 
@@ -64,6 +66,8 @@ make cleanunity
 
 ## Hello World CMock
 
+**cmock requires ruby and the bundle library to be installed. I will provide instructions soon.**
+
 This template provides a working Hello World example using cmock and unity together. Mocking using cmock required Hello World to be object-oriented. This was done in a rather trivial manner in order to demonstrate both object-oriented programming in C as well as mocking using the cmock framework and unit testing with unity.  
 
 Because of cmock's dependencies, I have added a more complicated `Makefile` to handle everything. This simple command will do everything:
@@ -80,7 +84,7 @@ You can clean everything up with a single
 make clean
 ```
 
-or you can target specific options (I'll add a list shortly, for now just look in the makefiles and grep for 'clean').
+or you can target specific options `cleanobj` and `cleanbin` or `cleanunity`, `cleancmock`, and `cleanmocks` for the libraries and mocks.
 
 There are also a couple options to run everything once the first `make` is executed:
 
